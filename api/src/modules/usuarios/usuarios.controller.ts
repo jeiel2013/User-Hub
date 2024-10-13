@@ -28,6 +28,6 @@ export class UsuariosController {
 
   @Delete(':id')
   async delete(@Param('id') id: number) {
-    return this.usuariosService.delete(id);
+    return this.usuariosService.delete(Number(id));
   }
 }
