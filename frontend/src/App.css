@@ -1,0 +1,172 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 97vh;
+  background-color: #fff;
+}
+
+.logo-container {
+  /* margin-bottom: 20px; */
+  padding-right: 170px;
+}
+
+.logo {
+  width: 600px;
+  height: 570px;
+  border-radius: 10px;
+}
+
+.about-logo {
+  padding-left: 175px;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+.form-container {
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-container .label::before {
+  content: "";
+  display: inline-block;
+  width: 15px; /* Largura do checkbox */
+  height: 15px; /* Altura do checkbox */
+  border: 2px solid #007bff; /* Cor da borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  margin-right: 10px; /* Espaçamento à direita */
+  vertical-align: middle; /* Alinha verticalmente */
+  position: relative; /* Para o posicionamento do ícone */
+  transition: background-color 0.2s ease; /* Transição suave */
+}
+
+/* Estilo quando o checkbox está marcado */
+.checkbox-container input[type="checkbox"]:checked + .label::before {
+  background-color: #007bff; /* Cor de fundo quando marcado */
+}
+
+/* Adiciona a setinha de "ok" */
+.checkbox-container .label::after {
+  content: "✔"; /* O símbolo de check */
+  color: black; /* Cor do ícone */
+  font-size: 14px; /* Tamanho do ícone */
+  position: absolute; /* Para posicionamento */
+  top: 1.4px; /* Alinha o ícone verticalmente */
+  left: 3.5px; /* Ajusta a posição do ícone horizontalmente */
+  display: none; /* Escondido por padrão */
+}
+
+/* Mostra a setinha de "ok" quando marcado */
+.checkbox-container input[type="checkbox"]:checked + .label::after {
+  display: block; /* Mostra o ícone quando o checkbox é marcado */
+}
+
+.label {
+  font-size: 14px;
+  color: #000;
+  position: relative;
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: #000;
+  text-decoration: underline black;
+}
+
+.sign-in-button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.or-text {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.social-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.social-button {
+  flex: 1 1 48%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.sign-up-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.sign-up-link {
+  color: #007bff;
+  text-decoration: none;
+}
