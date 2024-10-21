@@ -12,31 +12,30 @@ function App() {
     e.preventDefault(); // Evita recarregar a página ao enviar o formulário
 
     try {
-      const response = await axios.get('http://localhost:3000/usuarios', {
+      const response = await axios.post('http://localhost:3000/usuarios/login', {
         username: username,
         password: password,
       });
-    
+      
       console.log('Resposta completa da API:', response); // Debug da resposta completa
     
       if (response.status === 200) {
         alert('Login bem-sucedido!');
-      } else {
-        alert('Falha no login. Verifique suas credenciais.');
       }
-    
     } catch (error) {
-      // Exibe mais informações para debug
       if (error.response) {
-        console.log('Erro na resposta da API:', error.response.data); // Dados retornados pela API
-        console.log('Status HTTP:', error.response.status); // Código de status HTTP
-        console.log('Cabeçalhos da resposta:', error.response.headers); // Cabeçalhos da resposta
+        console.log('Erro:', error.response.data);
+  
+        if (error.response.status === 401) {
+          alert('Credenciais inválidas. Por favor, tente novamente.');
+          setError('Credenciais inválidas. Por favor, tente novamente.');
+        } else {
+          setError('Ocorreu um erro ao tentar fazer login.');
+        }
       } else {
-        console.log('Erro sem resposta da API:', error.message);
+        setError('Não foi possível conectar ao servidor. Verifique sua conexão.');
       }
-      alert('Login falhou. Verifique suas credenciais.');
     }
-    
   };
 
   return (
@@ -77,17 +76,6 @@ function App() {
             Sign in
           </button>
         </form>
-        {/* <p className="or-text">or sign in with</p>
-        <div className="social-buttons-container">
-          <button className="social-button">Google</button>
-          <button className="social-button">Apple</button>
-          <button className="social-button">Facebook</button>
-          <button className="social-button">X</button>
-          <button className="social-button">GitHub</button>
-          <button className="social-button">Bitbucket</button>
-          <button className="social-button">Salesforce</button>
-          <button className="social-button">SSO</button>
-        </div> */}
         <p className="sign-up-text">
           Don’t have an account?{" "}
           <a href="/signup" className="sign-up-link">

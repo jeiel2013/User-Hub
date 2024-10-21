@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/database/PrismaService';
 import { UsuariosDTO } from './usuario.dto';
 
@@ -66,5 +66,23 @@ export class UsuariosService {
         id
       }
     })
+  }
+
+  async validateUser(username: string, password: string): Promise<any> {
+    // Procura o usuário pelo username
+    const user = await this.prisma.usuarios.findUnique({
+      where: { username },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Credenciais inválidas'); // Lança erro se o usuário não for encontrado
+    }
+
+    // Verifica se a senha fornecida é igual à armazenada
+    if (user.password !== password) {
+      throw new UnauthorizedException('Credenciais inválidas'); // Lança erro se a senha for inválida
+    }
+
+    return user; // Retorna o usuário se a autenticação for bem-sucedida
   }
 }

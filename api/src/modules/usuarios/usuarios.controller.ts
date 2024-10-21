@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, HttpCode } from '@nestjs/common';
 import { UsuariosService } from './usuarios.service';
 import { UsuariosDTO } from './usuario.dto';
 
@@ -9,6 +9,25 @@ export class UsuariosController {
   @Post()
   async create(@Body() data: UsuariosDTO) {
     return this.usuariosService.create(data);
+  }
+
+  @Post('login')
+  @HttpCode(200)
+  async login(@Body() loginDto: UsuariosDTO) {
+    const { username, password } = loginDto;
+
+    // Chama o método validateUser para verificar as credenciais
+    const user = await this.usuariosService.validateUser(username, password);
+
+    if (!user) {
+      throw new Error('Credenciais inválidas');
+    }
+
+    // Aqui você pode retornar um token JWT ou simplesmente uma mensagem de sucesso
+    return {
+      message: 'Login bem-sucedido!',
+      user, // Você pode incluir o usuário no retorno ou outros dados
+    };
   }
 
   @Get()
